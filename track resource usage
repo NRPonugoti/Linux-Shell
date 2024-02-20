@@ -1,0 +1,33 @@
+AWS Project using SHELL SCRIPTING for DevOps
+
+1. track resource usage 
+
+every day give resource usage report to your manager 
+shell script integrated to cronjob 
+
+installl AWS CLI
+aws configure 
+
+Vi aws_resourcetracker.sh 
+#!/bin/bash 
+#AWS S3
+#AWS EC2
+#AWS Lambda
+#AWS IAM users 
+#List S3 bucket 
+echo "print list of s3 "
+aws s3 ls > resoruceTracker
+#list EC2 instances 
+aws ec2 describe-instances | jq '.Reservations[].Instance[].InstanceId
+
+#list lambda
+aws lambda list-function >> resourceTracker:q!
+
+#list iam users 
+aws iam list-users 
+
+save file 
+
+jq   = json formet 
+iq = yaml formaet 
+> resoruceTracker =save info into this file 
