@@ -1,0 +1,666 @@
+Create a file :
+use cat command and touch command 
+touch : create an empty file using touch comand 
+Cat   :create file and endter the curse into the file 
+
+translate a file :
+create a file  file.txt with Hello world
+then translate this file like HELLO WORLD
+CAT FILE.TXT | tr a-z A-Z >upper.txt
+then check upper.txt
+cat upper.txt
+see like 
+HELLO WORLD 
+
+Remove the file :
+rm filename 
+
+Create Directory :
+mkdir d
+delete directory :
+direction will be empty , use below command
+rmdir directory_name
+if  directory is not empty m use below command
+rm -r directory name 
+(a) rmdir &lt;dir name&gt;
+(b) rm –r &lt;dir name&gt; (or) rm –R
+To remove directories forcefully: rm –rf &lt;Directory name&gt;
+Options r, R removes the contents of directory recursively.
+
+Long list :
+ls -R display all file including files of sub-directories 
+ls -l display all files and directories with detials 
+ls -a - display the .file as well 
+ls -al
+ls -lt , file.dir will display based on the time 
+Display only directories :
+ls ld */
+To know the path of the directory where you are:
+pwd
+Pwd means ‘path working directory’.
+
+cdChange directory
+Going to default directory: just type ‘cd’ wherever you are.
+
+
+Copy file :
+cp source destion 
+
+◦ Difference between $ and #
+$ normal user
+# super user
+
+How to switch from one user to another user ( su )
+◦ Importance of “sudo” “super user do”
+◦ To get the current date ( date )
+◦ To get the current month ( cal )
+
+ Understanding file permissions :
+file start - 
+directory start with d
+
+Changing the file permissions ( chmod )
+First field: users permissions(rwx)
+Second field: groups permissions(r-x)
+Third field: Others permissions(r-x)
+Fourth field: Number of hardlinks
+5 th field: Owner of the file
+6 th : group of the file
+7 th : Timestamp when the file is created
+8 th : Name of the fileTotal 24: gives the total number of blocks occupied by all files
+To know whether a file is directory or not, file starts with ‘-‘ and directory starts with ‘d’.
+Chmod command:
+There are 3 permissions given to file: read, write, execute
+Read(r)-4
+Write(w)-2
+Execute(x)-1
+Chmod command changes the permissions of file.
+users-u
+groups-g
+others-o
+
+
+
+
+
+Display first 5 lines or 10 in file use the HEAD command : head -5 filename
+Display last n number of lines or 10 in file use the tail command : tail -2 filename 
+
+
+Pipe commands :
+we want to get 5th line only fromt he file then use the pipe command 
+head -5 file30 | tail -1 (| pipecommand )
+get the result using first command (head -5 file30 ) then second command execute on the result of first command 
+
+
+date - print current date
+wc - word count 
+number line / number of words /number of charcetes
+ wc -l =only line 
+wc -c =only characets 
+wc -w  =only words 
+
+
+
+i want to complete directory strucure by usinf tree command 
+first install the tree comand in linux systems 
+sudo apt install tree
+then use command tree d1
+
+Linux community maintain the repository that repos name is apt 
+
+Apt repository 
+
+when every you want to instal the package the follow the 2 steps
+1.update the repos 
+sudo apt-get update 
+2.install the required package 
+sudo apt-get install tree
+
+
+VI Editor :(Visual input)
+--------------------------
+2 modes
+command (default)
+insert mode (i)
+
+come back to command mode (esc kay)
+save and quite file :   :wq 
+:q! - exit without saving 
+dd - to delete line
+yy -to copy the line 
+p- to paste below
+
+
+
+
+================================
+Connecting to servers passwordless:
+
+There is a facility in unix to connect to the servers passwordless. When doing ssh, scp, sftp commands a
+password will be asked to run the commands on destination server, in order to avoid this step below are
+the following steps:
+1) On the source server, run command ‘ssh-keygen –t rsa’ at the command prompt to save the
+public key and private key. While running this command, a password will be asked but don’t give
+password there just type enter. Then it will create public key and private key in hidden directory
+‘.ssh’.
+
+
+Go to the path where the keys are generated. In the above ex, the keys are created in the path
+‘/root/.ssh
+
+
+then cat authorized_keys
+
+id_rsa.pub  public key
+id_rsa  private key
+3) Copy the created public key on the source server to destination server to file
+‘/.ssh/authorized_keys’.
+4) After copying command ssh, scp, sftp can be executed with passwordless from source server to
+destination server.
+
+
+
+
+=====================================
+
+how to create the user in linux
+
+To create new user
+$ sudo useradd sai
+$ vim /etc/passwd ( User will be created in this
+file )
+To set the password
+$ sudo passwd sai ( sai is the username)
+All users information is present in passwd file.
+$ cd /etc
+ls
+$ vim /etc/passwd
+
+============================
+
+date - show the current date and time 
+cal - show this month's calender
+uptime - show the current time 
+whoami -who you are logged in as
+finger - display inforation about user 
+Users /id -shows user infromation
+man command  - shows manaul of command 
+username  - show your username 
+who /w - display who is online 
+
+
+
+
+
+
+
+
+
+Network commands :
+
+hostname  - gives the name of the server
+hostname information is under cat /etc/hostname
+
+# hostname linux-server - give the server name instalntly  ( temparary)
+
+to restart the your systems 
+# init 6
+
+# ping <ip> -availability of destination server over the netwrok 
+
+# wget download package /software onto linux systems 
+
+#ifconfig / ip addr : lists IP address of the server 
+
+#telnet connect to remote host /check port availability status- telnet usefull to tell you wheather particuler port is used or not
+#telnet localhost 80 
+
+in your PC , which port is running - use the below command
+
+#netstat -tulpn
+
+# curl : access the application as from browser ( in EC2 linux machine , you can access the goolge web page like # curl google.com )
+what is use of curl command : once you have deployed your application , you just want to check from your local system wheather it is accessble or not 
+
+
+==============================
+Services command 
+
+Service - this control the starting and stoping of services 
+chkconfig -this controls which service are set to start on boot 
+
+# service <name of the seerivce > status -to check status of the service
+# service <name of the seerivce > start  - to start the service 
+# service <name of the seerivce > stop - to stop the service 
+# service <name of the seerivce > reload -to relaod the service 
+# service <name of the seerivce > restart - to restart the service 
+
+#chkconfig --list  ---to check the availability of seervice 
+#chkconfig <Service> on -to make the service avaialble after restart
+#chkconfig < Service> off - to make the service unavailable after restart
+
+#chkconfig httpd on  - add it automatically and re boot and re start the linux machin then automatically active the service 
+
+systemctl and service both are same 
+
+#systemctl status servicename httpd
+
+SSH - secure shall is method for secure remote login from one computer to another 
+port: 22
+Daemon : sshd
+config file : /etc/ssh/sshd_config
+
+httpd path : /vat/www/html
+
+
+==================================
+
+Process management command 
+
+1.when you start a program or running an application in linux , it actually run as a process
+2.a Linux process ( a deamon) , running in foreground or in the background , uses memory and cpu resources 
+
+command          description
+ps -ef        list the process which are running in the system 
+kill /kill -9 kill aprocess or service
+fg            run the program in the foreground
+bg            run the serivce on the back ground 
+top           list top 20 process which are consuming more cpu
+
+bg explaination
+
+# sleep 10 &
+this is exectued background 
+
+sometime what happen execute some command and take long time and push them background 
+
+#sleep 500
+then Ctrl +z - whenevery you give the ctrl+z this particuler process stopped and added to the process table 
+
+use the jobs command 
+# jobs 
+[1] - stopped sleep 500
+
+ then iwant to run the jobs background 
+
+# bg %1 (1 job number)
+
+then i want to bring the background jobs into frontend 
+# fg %2
+
+===============================================
+Software managment command 
+
+yum is the primary tool for getting ,installing ,deleting ,quering and managing redhat enterprise Linux RPM software packages from official redhat software repos 
+as well as the third pary repos 
+
+commands :
+
+# yum install <Package name>
+# yum remove <Package name>
+# yum update <Package name>
+# yum info <Package name>
+#yum list avaialble
+yum list installed 
+
+#yum install wget -y ( -y means yes to install this software and don't ask me again )
+
+check particuler package is installed or not 
+
+# yum list installed | grep wget 
+
+to check the software avaialbe or not in redhat repos 
+
+#yum list available | grep wget
+
+
+============================
+system managment command 
+
+command            Description
+history          list all command by user 
+free            free memory of a server   / #free -m
+/Proc/meminfo    display memory ifnoramtion    / #cat /Proc/meminfo
+/proc/cpuinfo   display cpu info      / #cat /proc/cpuinfo
+uname -a          show kernel information
+du           show directory space usage 
+whreis         show poaaible location of app
+which           show which app will be run by default 
+
+to know which version of operating systems in your server 
+
+#cat /etc/redhat-release
+
+# df  - show the file systems
+#df -m  shoing 
+
+sort occuped top 10 files in directory 
+
+# du -k /var |sort -rn head
+
+
+=====================================
+User management commands 
+
+ in linux 3 types of users 
+    1. super or root user   : user is the most powerfull user , he is the administrater user 
+    2. system user : user created by the software or application
+    3. Normal user : Normal user are the users created by root user
+
+
+type        exmaples         Home Directory         Shell
+super user   Root              /root                /bin/bash
+System User  ftp,ssh,apache     /var/ftp,etc        /sbin/nologin
+Normal User   visitor,ec2-user  /home/username      /bin/bash
+
+
+
+
+User creation :
+whenever a user is created  in linux , below things happen by default 
+
+ A home directory is created (/home/username)
+ Unique UID and GID are given to user 
+ An entry in /etc/passwd
+
+syntax for creating a user in Linux 
+
+# useradd <option><username>
+
+Options are :
+ -u user id
+ -G Secondary group id 
+ -g primary group id 
+ -d home directory 
+ -c comment 
+ -s shell 
+
+
+create a user :
+# useradd john
+#cd /home
+# id john
+will give one uid and gid ( uis = user id , gid = group id , groups=100) 
+will check it 
+# cat /etc/passwd ( you cann see all users here)
+
+gorup of part of 
+# cat /etc/group
+
+#usermod to change the existing  attributes of user 
+
+#usermod -G John(groupname) mark ( userid)
+
+during docker setup we should add user to a docker group
+
+
+Login as a User onto Ec2 instance
+create a passowrd for john user 
+# passwd john
+newpassword : john
+#cat /etc/passwd 
+
+by default , AWS allow key-base authentication , so you have password only , that's why we have to change the password based configratio and edit it 
+
+# nano /etc/ssh/sshd_config
+open file change it passwordAuthentication yes
+save it 
+
+service sshd reload
+	 
+  LS Commands :
+
+ls  - show all files and directory under the current directory 
+
+FIle Permissions 
+
+Permissions are applied at 3 level
+ owner or user group
+ group level
+ Others level
+Permissions are applied at 3 level
+r -read only
+w -write/edit/append/delete
+x -Execute /run
+
+unix/linux files have 8 attribute that can be seen with ls -lcommand 
+# ls -l 
+-rw-r--r--   1       root    root     8     may 7 20:29   file1
+            file link                 size
+
+-              rwx                 rw-                                   r--
+file type     owner permisions  Primary group permisions           other permisions
+
+
+files type
+- normal file
+b -block file 
+c - character file 
+d - directory
+l -link files 
+
+
+Change permisions on file or directory 
+
+permisions can be set on any file /directory using two methods
+1. symbolic method (ugo)
+#chmod u=rwx g=rw ,o=r <filename > ( #chmod u+x file1)
+#chmod u+x ,g-w,0=r file1 ( + means add permisions , - means remove  permision, = means overide the permision)
+#chmod ugo=rwx <filename>
+2. absolute method( numbers)
+we use numbers insted of symbals 
+read -4
+write -2
+execute -1
+# chmod 764 <file name>
+#chmod 777 <file name>
+#chmod 666 file1
+#chmod 755 file1
+#chmod 000 file 1 ( no permision to every one)
+
+
+Managing files or directories :
+
+cp - copy a file
+mv - move a file 
+find - find a file  ( find / -name anyname)
+grep -search for a pattern in a file
+cd - switch b/w directroies
+diff - find content difference in 2 files
+sed -search adn replace particuler pattern 
+chmod -change file permision
+chown - change ownership of a file   ( chown user:group <file name> ; #chown john:john file2)( only root user can able to do the ownership of file )
+#chown john file3 - only change the owner of the file not group 
+file - show what kind of file it is
+
+
+
+
+
+
+
+
+github link :
+
+https://github.com/yankils/hello-world
+
+https://github.com/NRPonugoti/hello-world
+
+
+
+
+
+
+
+
+========================================================
+Manage files and directory :
+
+Cp - copy a file 
+#cp touch file1 file 2
+#cat>file
+adding content
+Ctl+c
+file 2 does not have content
+
+copy the content from file 1 to file 2
+
+#cp file1 file2
+#mkdir dir1
+i want copy file into dir1 
+# cp file1 dir1 ( destination location is directory then just check that directory file1 is there or not , not exist will create file1)
+with in the directory , will create the file1
+
+and also you can copy the directories
+# cp dir1 dir2
+ bith are directories , you have flags  -R
+# cp -R dir1 dir2 
+
+
+---------------------------------
+move or rename a file 
+
+mv  - move a file - something like cut and paste
+
+#mv source file destination file
+#mv file2 dir2
+move the file2 from root to dir2 , does not exist file2 in root 
+MV command use for rename file as well
+
+#cd dir2
+#mv file1 file3 ( move the content of file1 to file3 and disappear the file 1)
+
+---------------------------------
+Change directory -command : Cd
+
+cd - siwtch b/w directories 
+
+#pwd
+/root
+#cd ..
+#pwd
+/
+#ls
+you can see the entire hirachy of linux systems
+#tree
+#temp -you can keep tempary file
+
+#cd temp
+#pwd
+/temp
+
+# cd /root/dir1  this is called absulte path , start with /
+#cd ../root/dir1   this is called relavent path , strt with ..
+--------------------------------------------
+
+how to search file - command : find , diff and file 
+find command used to find the files or directories path , it is eaclty like this find option in windows where you can search for a file
+
+syntax : find / -option filename 
+
+-option : 
+ -name : for searching a file with it's name 
+-user for file whose owner is particuler user's
+-group  for files belonging to particuler group
+
+#find / -name file1
+
+
+diff command - it is showing the difference b/w tow files
+# diff file2 file3 
+
+file command used for what type of file 
+
+#file file1
+file1: ASCII text
+------------------------------
+Search a word in a file  - command : grep 
+Grep stands for Global Regular Expression print 
+synatx: grep <pattern> filename 
+
+#grep hello file1
+#grep -i PERMIT /etc/ssh/sshd_config  ( i ignore the case sensitive)
+
+#ls -l|grep envirment
+
+form /etc dir , you need to fileter the directories only
+
+#ls -l| grep ^d  ( ^ this carrot symbol , thi ^ helps us to seach first charactor is d or not) d should be starting latter of the lines
+
+
+# grep ^t file1
+--------------------------------------
+Replace a Word in a file -Command : sed
+
+sed stands for stream editor , which is used to search a word in the file and replace it with the word required to be in the output
+note : it will only modfiy the output ,but there will be nochange in the original file
+
+Examples :
+sed 's/old_text/new_text' file_name    ( s- search)
+sed 's/old_text/new_text/g' file_name  ( g -global)
+sed -i 's/old_text/new_text' file_name
+sed -n '5,10p' file_name   - disply 5 to 10 lines in the file 
+sed '10,20p' file_name  - reome the 10 to 20 lines in the file and remain it will be display
+
+
+
+
+-------------------------------------------------
+linux basic
+
+date - gives the infroamtion about system date 
+cal - current month calender
+uptime -current time of system
+whoami - tell us that which user log in  
+finger - display information about user 
+users/id -shows user information 
+man  - shows manual of command 
+username  -show your user name
+who/w display who is online 
+
+ls (list ) -
+ls -l - long list --gives the files with alphabetic order
+ls -l -t -display based on the time
+ls -l -t -r (r -reverse) - display all files with descending order
+pwd : present working directory - which directory you are 
+cat - view the file ,
+less  - display the file page by page
+more  - owrk like less command 
+
+head - display the first 10 lines of file 
+tail - display last 10 line of file 
+page - similare like more/less command
+touch - create 0 bytes file
+cat>filename -create a file and allow to write 
+ (cat >> filename - append the content to existing filename like cat > filename and add the 3 line of content then will add another 3 line of content using cat >> filename)
+nano -create a file if filename does not exist
+vi -create a file if filename not present 
+rm - remove file 
+mkdir -create a directory
+rmdir - remove directory
+rm-rf - remove a directory 
+
+
+#yum install nano -y
+
+
+#mkdir dir1
+
+-------------------------------
+Archiving files or directories 
+
+gzip -create a compressed file 
+gunzip - unzip a file
+tar - extract tar file ( zip tha directories using tar) 
+zip the folder 
+#tar -cvf dir1.tar dir1
+unzip the tar file
+#tar -xvf dir1.tar 
+
+-----------------
+Crontab Explained 
+
+
+
+
