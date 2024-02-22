@@ -20,3 +20,11 @@ for i in nare  ponu su
 do 
    echo "string - ${i}"
 done 
+===============================
+#!/bin/bash
+file="/root/file.txt"
+for server in $(cat $file)
+do
+                echo "Server is $server"
+        done
+
