@@ -12,6 +12,10 @@ cat upper.txt
 see like 
 HELLO WORLD 
 
+find location /path of any software 
+1. which git 
+2. command  -v git 
+
 Remove the file :
 rm filename 
 
