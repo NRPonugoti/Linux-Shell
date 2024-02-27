@@ -1,0 +1,40 @@
+cut command:
+
+cut command 
+it can used to cut parts of a line by byte position , character and filed  basicaly the cut command slice a line and extract the text 
+
+#cut OPTION ...[FILE]...
+cut -b 1,2,3 //-b byte 
+cut -c 1,2,3
+-f(filed):-c option is useful for fixed -length lines , most unix files doesn't have fixed -length lines 
+cut use tab as a default delimiter 
+mostly use filed means column 
+
+test.txt
+yash  abc xyz 
+abvc  aaaa xasdf 
+aaa   aaa  uiahsknsk
+
+#cut -b 1 test.txt 
+y
+a
+a 
+#cut -b 1- test.txt // display all lines 
+yash  abc xyz 
+abvc  aaaa xasdf 
+aaa   aaa  uiahskns
+
+#cut -b 1,2,3 test.txt 
+yas
+abv
+aaa
+#cut -c 1,2,3 test.txt 
+
+#cat test.txt | cut -d ' ' -f 1
+-d = delimeter 
+-f filed 
+1 first word of each line in the file 
+yash
+abvc
+aaa
+#cat /etc/passwd | cut -d ':' -f 1 
