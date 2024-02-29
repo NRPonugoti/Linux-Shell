@@ -1,0 +1,42 @@
+
+read command :
+
+syntax: 
+Read <options> <arguments> 
+
+Options:
+-a <array> 
+-d <delimiter>
+-e start an interactive shell session to obtain the line to read 
+i <prefix> adds initia text before reading a line as prefix 
+-n <number>  returns after reading the specified number of characters while honoring the delimiter to terminate early 
+-N<number> returns after reading the specified number of characters , ignoring the delimeter 
+-p <prompt> outputs promts string before reading user input 
+read -p "what is your name:" name 
+execute it :
+o/p
+what is your name : 
+-r disable backslash to escape character 
+-s do not echo the user input 
+read -p "Enter the password:" -s password 
+
+-t <time> the command timeout after the secified time in seconds 
+read -p "it will time out after 10 seconds " -t 10 
+
+-u<file description> read from file descriptor instead of standard input 
+
+example :
+#!/bin/bash
+read -p "what is your name:" name 
+readp -p" enter the password " -s password 
+echo $name 
+echo $password 
+read -p "it will timeout in 10 seconds :" -t 10
+
+how to read file using while loop
+#!/bin/bash
+echo" while demo....."
+while read -r line ;
+do  	echo "$line"
+done <test.txt 
+
