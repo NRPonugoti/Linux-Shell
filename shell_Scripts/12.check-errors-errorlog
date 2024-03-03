@@ -1,0 +1,49 @@
+#!/bin/bash 
+# description: write a shell script to check errors in error logs 
+error_file=`cat /var/log/message`
+matched-error=`grep -i error /var/log/messages`
+echo $matched-error
+  if [[ $? -eq 0]];
+then 
+  echo "found error in OSlogs : $matched_error "
+else 
+  echo "no error in message logs "
+fi 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <<
+#grep devops filename 
+#grep -i devops filename  (i ignore case sensitive )
+how many times devops keyword appear in file 
+# grep -c devops filename 
+ignore case 
+# grep -ci devops filename 
+display exact devops keyward in the file and dispaly exact devops as output 
+#grep -0 devops filename 
+display matching and ther content 
+#grep -w devops filename 
+
+ignore devops key and display others
+#grep -v devops filename 
+
+  
+  
+
+  
+  >>
