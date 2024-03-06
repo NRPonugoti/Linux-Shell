@@ -1,0 +1,73 @@
+Understanding Regular Expressions
+
+A regular expression is a sequence of characters that forms a search pattern.
+It can be used to check if a string matches a specific pattern, to replace parts of a string, or to split a string into parts.
+Regular expressions can be simple, such as 123, or complex, like ^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$, which matches most email addresses.
+
+Basic Regular Expression Syntax
+
+Here are some basic regex symbols:
+
+.: Matches any single character.
+*: Matches zero or more of the preceding character.
++: Matches one or more of the preceding character.
+[abc]: Matches any character enclosed in the brackets (in this case, a, b, or c).
+[^abc]: Matches any character not enclosed in the brackets.
+^: Matches the start of the line.
+$: Matches the end of the line.
+Using Regular Expressions in Bash
+
+In bash, you can use regular expressions with the =~ operator in an if statement. Here’s an example:
+
+#!/bin/bash
+
+string=$1
+
+if [[ $string =~ ^[0-9]+$ ]]; then
+  echo "$string is a number."
+else
+  echo "$string is not a number."
+fi
+This script checks if the input is a number. The regular expression ^[0-9]+$ matches strings that only contain digits.
+
+Capturing Groups
+
+Parentheses () can be used in regular expressions to define groups. 
+These groups can then be accessed using the special bash variables ${BASH_REMATCH[n]}. ${BASH_REMATCH[0]} contains the entire matched string,
+${BASH_REMATCH[1]} contains the first group, ${BASH_REMATCH[2]} the second, and so on.
+
+Here’s an example:
+
+#!/bin/bash
+
+string="My name is Aby and I am 3 years old."
+
+if [[ $string =~ "My name is ([a-zA-Z]+) and I am ([0-9]+)" ]]; then
+  name=${BASH_REMATCH[1]}
+  age=${BASH_REMATCH[2]}
+  echo "Name: $name"
+  echo "Age: $age"
+fi
+This script will print:
+
+Name: Aby
+Age: 3
+Practical Example
+
+Regular expressions can be used in many ways. One practical example is validating input. Here’s a script that checks if an input string is a valid email address:
+
+#!/bin/bash
+
+email=$1
+
+regex="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+
+if [[ $email =~ $regex ]]; then
+  echo "$email is a valid email address."
+else
+  echo "$email is not a valid email address."
+fi
+Summary
+
+Regular expressions are a powerful tool for handling text in bash scripts. They can be complex, but understanding them will greatly expand your scripting capabilities. The key is practice. 
+Try creating your own regular expressions and using them in your scripts. Happy scripting!
