@@ -1,0 +1,26 @@
+The sed command is mainly used for text substitution. It allows you to replace all instances of a string with another string.
+
+view file  content 
+searching 
+find and replace 
+insertion and deletion 
+sed also supports regular expression which allows it perfom complex pattern matching 
+
+Advantage :
+Sed can perform any operations on file without opening the file 
+sed syntax:
+sed [option] commands  [file-to-work-with-sed]
+
+display file 
+#sed '' filename 
+sed 'p' filename  -it will print output twice 
+sed -n 'p' filename - this will ignore 2 times print 
+sed -n '$p'filename  -this will print last line 
+sed -n '5 ,10p' filename  -it will print 5th to 10th line 
+sed '10d' filename -only while displaying delete 10th line number )
+sed -i'2,10d' filename  -delete in original file also 
+sed -i.backup '2,10d' filename  -this will take backup before delete 
+
+Example: To replace the word “sample” with “test” in sample.txt, use:
+
+sed 's/sample/test/g' sample.txt
