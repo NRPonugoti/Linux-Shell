@@ -1,5 +1,5 @@
 The sed command is mainly used for text substitution. It allows you to replace all instances of a string with another string.
-
+sed (Stream Editor) is a text processor used for transforming and filtering text. It’s particularly good for search and replace operations.
 view file  content 
 searching 
 find and replace 
@@ -24,3 +24,15 @@ sed -i.backup '2,10d' filename  -this will take backup before delete
 Example: To replace the word “sample” with “test” in sample.txt, use:
 
 sed 's/sample/test/g' sample.txt
+
+Example 1: Replace First Occurrence of a Pattern
+sed 's/Linux/UNIX/' file.txt
+
+Example 2: Replace All Occurrences of a Pattern
+To replace all occurrences, not just the first, append g (global) to the command:
+
+sed 's/Linux/UNIX/g' file.txt
+
+
+
+
