@@ -1,0 +1,39 @@
+awk is a scripting language used for manipulating data and generating reports
+It works best when working with structured data (like columns).
+Example 1: Print a Specific Field
+Suppose you have a text file (file.txt) containing the following lines:
+
+Suresh Kumar 30
+Ramesh Kumar 25
+The awk command can print specific fields (columns) from each line. Here’s how to print the first column:
+
+#!/bin/bash
+
+awk '{print $1}' file.txt
+Example 2: Perform Operation on a Field
+
+awk can perform operations on fields. For example, to add 10 to the third column of file.txt, you could use:
+
+#!/bin/bash
+
+awk '{$3 = $3 + 10; print}' file.txt
+Using SED and AWK Together
+
+Sometimes, you may need to use sed and awk together to perform complex text manipulations.
+
+Example:
+
+Suppose we have a file file.txt containing:
+
+1:Suresh:Kumar:30
+2:Ramesh:Kumar:25
+We want to replace colons (:) with spaces and print the second field. Here’s how to do it:
+
+#!/bin/bash
+
+sed 's/:/ /g' file.txt | awk '{print $2}'
+This script first uses sed to replace the colons with spaces, then awk to print the second field.
+
+Summary
+awk and sed are powerful tools for text manipulation in shell scripts. This tutorial covered the basics,
+but there’s much more to learn. Keep practicing and experimenting to develop your skills further!
