@@ -1,0 +1,18 @@
+
+1. grep: Pattern Searching
+
+Searching for a Specific Pattern:
+grep "Linux" example.txt
+
+Case-Insensitive Search:
+grep -i "linux" example.txt
+
+
+Displaying Line Numbers:
+grep -n "grep" example.txt
+
+
+Inverse Search:
+To display lines that do not match a specific pattern, use the “-v” option
+grep -v "example" example.txt
+The output will display all lines that do not contain the word “example”:
