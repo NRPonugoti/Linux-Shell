@@ -1,0 +1,71 @@
+Permission Types:
+Linux file system permissions consist of three types: read (r), write (w), and execute (x). These permissions control access to files and directories
+
+Read (r): Allows users to view the contents of a file or list the contents of a directory. 
+b) Write (w): Enables users to modify a file’s content, rename or delete the file itself, or create and delete files within a directory.
+c) Execute (x): Grants users the ability to execute a file if it is a script or run a directory as a program.
+
+Permission Representation:
+         Owner           Group           Others
+         -----           -----           ------
+Read    |  r  |         |  r  |         |  r  |
+Write   |  w  |         |  w  |         |  w  |
+Execute |  x  |         |  x  |         |  x  |
+
+
+Understanding the Numeric Representation:
+      Owner           Group           Others
+         -----           -----           ------
+Read    |  4  |         |  4  |         |  4  |
+Write   |  2  |         |  2  |         |  2  |
+Execute |  1  |         |  1  |         |  1  |
+
+Modifying Permissions:
+
+To modify permissions, we use the ‘chmod‘ command in Linux. It allows us to add or remove permissions for the owner, group, or others. The command can be used with both the character and numeric representations. Let’s explore some examples:
+
+a) chmod u+w file.txt – Adds write permission for the owner.
+b) chmod g-x directory – Removes execute permission for the group.
+c) chmod o+rwx script.sh – Grants read, write, and execute permission for others.
+
+
+Special Permission Modes:
+Linux file system permissions include special modes that provide additional functionality:
+
+a) Set User ID (SUID): When enabled, allows a user to execute a file with the permissions of the file owner.
+b) Set Group ID (SGID): Similar to SUID, but executes a file with the permissions of the group owner.
+c) Sticky Bit: When set on a directory, only the owner can delete or rename the files within it, even if others have write permission.
+
+
+
+
+
+
+
+
+
+
+
+Sticky Bit:
+
+Shared Directories: The sticky bit is commonly used on shared directories to maintain privacy and prevent unauthorized modification or deletion of files.
+By setting the sticky bit on a directory, only the owner of a file within that directory can delete or rename it, even if others have write permissions. 
+This is particularly useful in public directories such as /tmp, where users can create and manage their temporary files without interfering with others’ files.
+Public File Uploads: The sticky bit can also be used on directories where users upload files. It ensures that each user can manage and access only their own files,
+preventing accidental or malicious modification or deletion by other users.
+
+Setting the Sticky Bit:
+To set the sticky bit on a directory, follow these steps:
+
+a) Navigate to the parent directory containing the target directory:
+
+cd /path/to/parent_directory
+
+b) Use the ‘chmod’ command to set the sticky bit:
+
+chmod +t target_directory
+
+Verify the changes using the ‘ls -l‘ command.
+c) Revoking the sticky bit:
+
+chmod -t target_directory
