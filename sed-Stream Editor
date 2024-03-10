@@ -33,6 +33,17 @@ To replace all occurrences, not just the first, append g (global) to the command
 
 sed 's/Linux/UNIX/g' file.txt
 
+============================================================================================================
+find and replace with SED 
 
+sed 's/root/devopsclass' filename (substitiute root with devops 1st word occurence with new world )
+sed 's/root/devopsclass/g'filename (substitiute root with devops globally in whole file )
+sed -i.backup 's/root/devopsclass/g' filename (changed original file itslef)
+sed '/search/s/old/new/g' filename (Replace the old word with new word if that new line consists of search word)
 
+====================================================================
+insertion and deletion 
+i and a (insert before and insert after )
+#sed -i '1i ---------------' filename 
+#sed -i '10a ###################' filename 
 
