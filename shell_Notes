@@ -1,0 +1,630 @@
+what is shell ?
+ A shell provide an envirnmonet to a user to execute commands and interact with kernel 
+ 
+type of shell :
+bash 
+ksh
+sh
+tsh
+
+what is my my shell type?
+echo $0 
+
+check other types of shell will be avaible in my linux systems 
+#cat /etc/shells 
+
+change shell type :
+#echo $0 display default shell :ksh 
+now change to bash as default shell 
+#bash -- > enter 
+
+what is shebang ?
+
+#!/bin/bash 
+
+sending output to terminal ?
+echo " hello "
+echo -n "hello /n how are you "
+how to run shell script:
+bash shell_scrit_name
+#bash 01_basic.sh
+or
+./01_basic.sh
+or 
+/home/ponugonr/shell_script/01_basic.sh 
+
+ctrl+c = termianate 
+ctrl+z =stop 
+
+comments in shell script:
+# this is single  commanet 
+<< multiline comments 
+
+what are variables ?
+
+VAR_NAME=value 
+
+vi var_demo.sh
+name="narendra"
+age=30
+echo "My name is $name and age is $age"
+name="reddy"
+echo "new name is ${name}"
+save execute it 
+
+Constant variable?
+once you define a varaible and don't wanna change it untill end of script 
+readonly var_name="HI"
+
+variable with parameter 
+vi var-parameter.sh
+#!/bin/bash
+PERSION=$1
+PERSION=$2
+echo "${PERSION}"
+echo "${PERSION}"
+save it and run it 
+
+#./var-parameter.sh  Narendra Ponugoti 
+
+
+====================================
+function (){
+}
+
+#!/bin/bash 
+Hello(){
+echo "Hello !!! $1"
+echo "Script Name: $0"
+echo "Number of Args :$#"
+echo "ALl args are : $@"
+
+}
+echo "before calling function , checking name : $1"
+Hello $1
+
+
+
+==========================================
+Array in SHell Script:
+======================
+how to define an array?
+ myArray=(1 2 Hello "Hey man")
+
+how to get values from an array ?
+echo "${myArray[0]}"
+echo "${myArray[1]}"
+
+retrive all values from array 
+echo "${myArray[*]}"
+
+how to get length of array 
+echo "${#myArray[*]}"
+
+how to get specific values or range 
+echo "${myArray[*]:1:2}"
+echo "${myArray[*]:1}"
+
+updating array 
+myArray+=(5 6 8)
+
+modify existing value 
+myArray[2]=10
+
+delete vaules 
+unset myArray[2]
+
+Arrays KEY-VALUE
+===================
+declare -A myArray 
+myArray= ( [name]=Paul [age]=20)
+echo "${myArray[name]}"
+
+============================================
+output:
+
+STDOUT =sucess1 
+STDERR=failure =2
+ls -ltr >log.
+ls -ltr >>log.txt (>> apend ouptput)
+
+ls -ltr 1>log.txt
+ls -ltr 2>log.txx
+ls -ltr &>log.txt ( save log even sucess or failure)
+
+==============================
+EXIT 
+
+exit status know the previous command status it is sucess or failer 
+previuos command status save into this :$? 
+$?==0 sucess 
+$? not equal to 0 failure 
+
+Script Name: 
+shell_Scripts/exit-condition.sh
+
+=======================================
+String Operations:
+-----------------------
+myVar="Hello World"
+length =${#myVar}
+upper=${myVar^^}
+lower=${myVar,,}
+replace=${myVar/World/Buddy}
+slice=${myVar:6:11}
+
+
+=============================
+user input :
+-----------------------
+read -p "please enter your name " name 
+echo "welcom $name "
+save run it 
+enter your name 
+
+===========================
+Arthamatci Operators :
+
+how to use expression
+let a++
+let a=5*10
+or
+((a++))
+((a=5*10))
+
+=========================
+conditianl statement 
+
+read -p "enter marks " mark
+if [ $mark -gt 40]
+then 
+	echo "You are passed "
+else 
+	echo "you are failed ....."
+fi 
+
+save it 
+
+Operators :
+Equal  -eq /== 
+Greaterthanorequalto    -ge 
+lessthanorequalto       -le 
+Not Equal               -ne/!=
+greaterthan             -gt 
+less than               -lt 
+
+read -p "enter your marks " mark
+vi elif.sh 
+if [ $mark -ge 80]
+then 
+	echo "A grade"
+elif [ $mark -ge 70]
+then 
+echo "B grade"
+else 
+	 echo "Failed "
+fi 
+
+Case :
+echo "Hey Choose an option"
+echo "a= TO Print current date , time "
+echo "b = To Print current working directory "
+echo "c = To list all the files in current directory "
+
+read choice 
+case $choice in 
+     a) date ;;
+	 b) pwd;;
+	 c)ls;;
+	 *) echo "you have provided invalid input"
+esac
+
+save it 
+
+=============================
+Logical operator 
+condition1 && condition2 
+both should be true 
+condition1 || condition2 
+one of the condition is trhe 
+
+
+=======================
+For loop :
+ for i in 1 2 3 4 
+ do 
+  echo "Number is $i"
+done 
+or 
+for  j in raju sham baburao 
+for p in {1..20} // provide range 
+
+
+#!/bin/bash 
+file="/root/scripts/servers.txt"
+for server in $(cat $file)
+do 
+	echo "Server is $server"
+done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+how to create shell script :
+
+touch first-shell-script.sh
+
+list file 
+#ls -al
+#ls -ltr
+
+disply more info about ls commnad 
+#man ls 
+Open the file 
+#vi first-shell-script.sh
+
+or
+create a file and enter the cursoser into file immeditaly 
+#vim second-first-script.sh 
+
+#!/bin/bash ( bash,ksh  - who is executed shell script , based on linux systems ,we will decide bash or ksh )
+
+#!/bin/sh and #!/bin/bash 
+both are same , #!/bin/sh is forward to #!/bin/bash this is called linking in linux 
+alwyas linking #!/bin/sh  is not linking to #!/bin/bash 
+#!/bin/sh is linking to #!/bin/dash , some operating systems are decided by linking to #!/bin/dash by default 
+
+what is difference b/w #!/bin/sh and #!/bin/bash 
+
+previously both are some but now a days some of operating systems makes default #!/bin/dash using linking concept 
+
+#!bin/bash 
+echo " My Name is Narendra"
+Save it 
+
+then execute script 
+#sh "shell_script.sh"
+or 
+./shell_script.sh
+
+chmod ---> grands permisions 
+ch -change 
+chmod commands grands permisions 3 different thing , what is permision of all users (every one)and your group(group) and you (user)
+
+user ---group -----every one 
+
+what is purpose of shell script :
+
+how do you monitor your node ?
+i use top command or i will write shell script 
+
+what are paramer we are using for node helath ?
+CPU and RAM 
+
+top - help you to analyze the node status 
+df   - printing your disk spcae 
+free   - getting free memory on the disk  
+nproc - analyzing what are the numner of CPU 
+------------------------
+#vim Node_health.sh 
+#!/bin/bash
+#Author:     // comments 
+#Date: 01/02/2024
+#purpose : this script putputs the node health 
+#version:1 
+
+set -x // debug mode 
+Set -e  // exit the script when there is an error, if the file will have 3 commands and second commnad is incorrect then first command is execut then go to second 
+and trying to execute then return error hence shell script stop script and display error and not execute 3 command 
+
+Set -o pipefail
+
+#set -o and set -e both are link , with out set -o ,one of the line in shell script : xxxxx | echo , at this time set -e only care about echo commnd 
+means echo command is  execute but first command retrun error but set -e don't care about first command only care about echo that's why no return error 
+echo "Print disk space"
+
+# set -exo pipefail we can try like this instead of above set -x,set -e, set -o pipeline 
+df -h 
+echo "Print Memory "
+
+free -g
+echo "Print CPU"
+
+nproc 
+
+ps -ef | grep "Amazon" | awk -F" " 'print$2'
+save the file 
+
+-------------------------------------------------------
+then execute 
+#sh Node_health.sh 
+
+
+#ps -ef | grep "any_proc_name_to_filter"
+#ps -ef | grep "amazon"
+ps -ef : print all  inforamtion about process that are running on this vertual machine 
+
+
+#date | echo " today is"
+o/p:  today is 
+
+date command s send o/p to stdin  becuase date is systhe default commands using this command 
+what this command does it send the o/p to stdin but pipe will not able to receive the information from stdin 
+pipe can only receive the information if the command is not sending the information to stdin 
+
+awk command : pattren scanning and processing language , it also give you a specific columns from output 
+#ps -ef | grep "amazon " |awk -F" " '{print$2}'#
+
+
+#vim test
+This Name is Narendra
+Save file 
+then 
+#grep name test
+display this line :This Name is Narendra
+then only display Narendra 
+##grep name test | aws -F" " 'print$4'
+
+
+
+------------------------------------------
+what is one of the major use case of devops engineer 
+
+let say there are 100 applications , one of the application is failing , the first thingthat comes to your mind is to look into the logs 
+so every time you run into an error there is your one success sutra that is 
+go to log file and find an error in the log file right 
+what people usually do this is general pratice that every devops engineer in every componeny does is when ever an application is failing 
+they simple go to log file and they try to find out the error in the logs 
+now to do that log files are usually very very huge then search error , find out an error 
+
+usually log file store S3 bucket or github anywhere 
+
+then 
+# curl url_link_of_log_file
+curl command retrive the info from internent 
+
+#curl   https://  | grep ERROR
+
+this is day_to_day activity 
+
+wget download file and curl share out put to you where as curl command directly got the information 
+
+
+Find Command : 
+#find / -name pam.d
+
+/ everything 
+
+sudo -substitute user do 
+
+
+if , ifelse , for loop:
+
+#vi ifelse.sh
+#!/bin/bash
+a=5
+b=10
+if [ $a > $b] 
+then 
+      echo "a is great than b"
+else 
+      echo "b is great than a"
+ 
+fi 
+
+
+save it 
+run it 
+#./ifelse.sh 
+
+for loop :
+
+for i in {1.100} : 
+do 
+    echo $1 ;
+done
+
+
+trap Commnad : 
+basically used for trapping signals so waht are signals 
+what are signal in linux 
+
+so whatever action that you are performing using some commands 
+let say  i am using a kill command is basically use to kill a process 
+$kill -9 process_Id 
+what is happen behind the scenes is 
+when you are executing this command , there is a signal that is passed to the linux saying that  
+so this person asking to kill 
+
+you can trap any signals what every avaiblel in linux systems 
+
+some one is use Ctrl+c while your program is running then you should thrown an message like dont use ctrl+c or send me an email using SMTP server 
+this secenrio you can use trap 
+#trap echo " dont use the ctrl+c "  SIGINT
+
+
+
+Interview Questions :
+
+1. list some of the commanly used shell commands ?
+
+ls  - listing file 
+cp  - 
+mv 
+mkdir 
+touch 
+vi 
+grep 
+debug command :
+top sar , df 
+
+2.write a simple shell script to list all process 
+
+ps -ef
+
+C16593-ASD Review re-occuring - Installation Early Termination Penalty Charge
+
+
+display only process_Id
+#ps -ef | awk -F" " '{print$2}'
+
+3.Write a script to print only errors from a remote log ?
+
+we are using curl and pipe and grep to achive this 
+ex:
+#curl google.com | grep ERROR
+#curl URL_Of_Logs | grep TRACE
+
+4. Write a shell script to print numbers divided by 3 and 5 and not 15 ?
+Print even number ---> divisible by 2
+print odd number 
+print numbers divisible by 3 
+print prime numbers
+
+vim sample_script.sh
+#!/bin/bash 
+# divisible by 3, divisible by 5, not 3*5=15 
+
+for i in {1..100}; do 
+
+if [ `expr $i % 3` == 0 || [ `expr $i % 5 ` == 0 ]] && [ e`xpr $i % 15` !=0 ];
+then 
+     echo $i
+fi ;
+done 
+
+Save file 
+#chmod 777 sample_script.sh
+#./sample_script.sh 
+
+
+
+5. Write a script to print number of "S" in mississippi 
+
+number of occurance S in String (mississippi)
+#vim number.sh
+#!/bin/bash 
+x=mississippi
+grep -o "S" <<< "$x" | wc -l
+#-o = only
+
+Save file 
+
+6. how will you debug the shell script?
+set -x 
+
+7. what is crontab in linux ? can you provide an example of usage ?
+
+
+8. how to open a read -only file ?
+vim -r test.txt
+
+9. what is diffrence b/w soft and hard link ?
+
+10. what is the diffrence b/w break and continue statements ?
+Continue ---> skip this and continue the next 
+Break ---> BREAK The execution 
+
+11. what are some disadvantage of shell script ?
+Erros are frequent and costly 
+the execution speed is slow 
+large, complex tasks aren't well suited to it 
+every time a shell command is executed , a new process is launched 
+
+12.what are the different types of loops and when to use ?
+
+13. Is bash dynamic or statically  typed and why ?
+shell is dynamically type , 
+x=0
+x="Narendra" -- shell by default idenfy the type of varialbe 
+
+14. explain about a network trouble shooting utility ?
+traceroute 
+tracepath 
+
+15. how will you sort list of names in a file ?
+sort 
+
+16. how will you manage logs of a system that generate huge log files everyday ?
+logrotate (gzip, zip)
+
+
+=================================================
+https://www.youtube.com/watch?v=9jw9F6mcQDo&list=RDCMUCnnQ3ybuyFdzvgv2Ky5jnAA&index=4&ab_channel=Abhishek.Veeramalla
+
+
+
+
+
+
+
+AWS Project using SHELL SCRIPTING for DevOps
+
+1. track resource usage 
+
+every day give resource usage report to your manager 
+shell script integrated to cronjob 
+
+installl AWS CLI
+aws configure 
+
+Vi aws_resourcetracker.sh 
+#!/bin/bash 
+#AWS S3
+#AWS EC2
+#AWS Lambda
+#AWS IAM users 
+#List S3 bucket 
+echo "print list of s3 "
+aws s3 ls > resoruceTracker
+#list EC2 instances 
+aws ec2 describe-instances | jq '.Reservations[].Instance[].InstanceId
+
+#list lambda
+aws lambda list-function >> resourceTracker:q!
+
+#list iam users 
+aws iam list-users 
+
+save file 
+
+jq   = json formet 
+iq = yaml formaet 
+> resoruceTracker =save info into this file 
+
+
+
+--------------------------------------
+
+go to github api docs (gethub REST API Documentation )
+
+find pull ----> click pull \
+List pull request 
+if you want to pull request for perticuler repos , use cURL for shell script 
+curl : in shell script curl is interact the api 
+https://api.github.com/repos/OWNER/REPO/pulls
+
+
+devops:
+   maintaine githubs 
+   working on multiple teams 
+    github repos 
+	   - give access
+
+list people who have access this repos  and revoke access 
+
+create EC2 instances
+and write script for github actions 
+connect to github 
+#export username=narendra04"
+#export  token="" 
+	   
