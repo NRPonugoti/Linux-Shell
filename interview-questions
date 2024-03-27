@@ -1,0 +1,70 @@
+1.How do you find the process using a specific port in Linux?
+
+lsof (list open files) command:
+lsof -i :<port_number>
+To find the process using a specific port using lsof, you can simply run:
+sudo lsof -i :PORT_NUMBER
+
+This command will list all processes that have opened connections (-i) on the specified port number.
+
+2.What is the purpose of the ‘ps aux’ command?
+
+ The ps aux command displays a detailed list of all processes running on the system.
+ ps: This command stands for "process status." It is used to report a snapshot of the current processes running in the system.
+aux: These are options passed to the ps command to specify the format and scope of the output:
+
+a: This option tells ps to display information about all processes associated with any terminal.
+u: This option tells ps to display detailed information about each process, including the user who owns the process, the process ID (PID), the CPU and memory usage, the start time, and the command being executed.
+x: This option tells ps to include processes that do not have a controlling terminal, which means it includes processes not attached to a terminal or not started by the user directly.
+So, when 
+
+3.How do you find files modified within the last 24 hours?
+
+The find command with the -mtime option can be used to locate files modified within a specified time frame.
+
+find /path/to/search -type f -mtime -1
+
+-type f: This option tells find to search for files only, excluding directories.
+
+-mtime -1: This option specifies that you're looking for files modified less than 24 hours ago. The -mtime option accepts a number followed by a unit. -1 means less than 24 hours. If you want to search for files modified exactly 24 hours ago, we can use -mtime 0.
+
+4.How do you find the process ID (PID) of a running process in Linux?
+
+The ps command or pgrep command can be used to find the PID of a running process.
+
+ps aux
+
+ps: is the process status command.
+
+a: displays information about other users' processes as well as your own.
+
+u: displays the processes belonging to the specified usernames.
+
+x: includes processes that do not have a controlling terminal.
+
+5. How do you check the size of a directory in Linux?
+
+The du -sh command provides the total size of a directory, including its subdirectories.
+you can use the du command, which stands for "disk usage". Here's the basic command:
+
+6.What is the use of the ‘at’ command in Linux?
+
+The at command is used to schedule a one-time task to run at a specific time.
+
+if we want to schedule the execution of a script called backup.sh at 2:00 AM tomorrow
+
+at 2:00 AM tomorrow
+
+Then, after pressing Enter, we would type:
+
+./backup.sh
+
+The at command is useful for automating tasks or running commands at off-peak times to reduce system load 
+
+7. How can you find the largest files and directories on a Linux system?
+
+du -ah /path/to/directory | sort -rh | head -n 10
+
+The du command is used to estimate file and directory space usage
+
+This command will display the top 10 largest files and directories recursively under the specified directory.
