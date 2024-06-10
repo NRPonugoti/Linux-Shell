@@ -1,0 +1,42 @@
+sort command used to sort lines of text file 
+ by default ascending Order
+
+sort file alphabetically , numarically or in revers order 
+to sort the lines aplphabetically 
+#sort hello.txt 
+Note: file will not modified 
+
+when every you consider file is numbaric values , use below command 
+Numarical sorting:
+$sort -n file.txt 
+
+how to sort reverse order 
+#sort -r file.txt 
+sort this data based on column 
+#sort -k 3 file.txt
+
+how to eliminate duplicate after sort 
+#sort -u file.txt 
+write a shell script to delete duplicate reocrds 
+#!/bin/bash 
+echo -n "enter filename :"
+read fname 
+sort -u $fname > tmp 
+mv tmp $fname 
+echo "duplicate records deleted form $fname "
+------------------------------------------------------------------
+uniq: 
+to display unique records 
+#uniq txt
+every space is uniq values 
+
+to count duplicate lines 
+#uniq -c kt.txt 
+
+to display repeated lines 
+#uniq -d kt.txt (d stands for duplicate )
+how to display all Duplicate Lines 
+#uniq -D kt.txt 
+
+how to display unique lines 
+#uniq -u kt.txt 
