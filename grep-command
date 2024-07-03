@@ -16,3 +16,157 @@ Inverse Search:
 To display lines that do not match a specific pattern, use the “-v” option
 grep -v "example" example.txt
 The output will display all lines that do not contain the word “example”:
+
+
+====================================
+grep -global reguler expression print 
+this command used for searching and matching text pattren in files 
+it print lines matching a pattren 
+
+grep "unix" filename 
+grep -i "unix" filename 
+grep -c "unix" filename 
+
+search as whole word 
+grep -w "unix" filename 
+grep display entire line which has matched string 
+
+grep -o "unix" filename 
+show line number of string 
+grep -n "unix" filename 
+
+Inverting the matching pattern 
+grep -v "unix" filename 
+
+we can use combination option
+grep -vic "unix" filename 
+
+to match the line start which start with given string pattern 
+grep "^unix" filename 
+to match the line start which end with given string pattern 
+grep "OS$" filename 
+
+search this string in particuler directory 
+grep -iR hello/home/ec2-user 
+grep -R {search][directory]
+
+
+EGREP: extended grep 
+i want to search for 2 words 
+egrep "unix|systems" filename 
+
+wildcard characters :
+1. * 0 or more occurances of preceeding charactor 
+#grep "at*e" filename 
+
+2.+ --1 or more occurances of preceeding charactor
+grep "at+e" filename 
+
++supports egrep 
+egrep "at+e" filename 
+
+3) ? -- 0 or 1 occurances of preceeding charactor 
++support egrep 
+egrep "at?e" filename 
+
+
+search for content that start with a 
+cat sample.txt | grep ^a 
+lines that end with t 
+cat sample.txt | grep t$
+
+check that the character 'p'appear exactly 2 times 
+cat sample.txt | grep -E p\{2}
+line where character 'a' precedes character 't'
+cat sample.txt | grep "a\+t" 
+o/p: bat ,eat 
+cat sample.txt | grep "a\?t" 
+
+ . expression 
+ ex:
+ a..c it matches any 2 characters 
+ a...c it matches any 3 characters 
+egrep "a.t" sample.txt 
+any number of characters b/w 2 characters 
+egrep "a.*c" sample.txt  - any no of letters b/w a and c 
+
+
+[] expression :
+-------------------
+it matches any one character form the given ist 
+a[aeious]c  ---> aac aec aic aoc auc 
+
+apc -- we do not get ,as p is not in the list 
+
+[]+ expression:
+---------------
+it matches any one or more characters from the given list 
+Ex:
+a[aeious]c --aeic ,aioc ,aiouc 
+
+[-] ----> deal with range 
+[a-z] lower case 
+[A-Z] uppercase 
+[0-9] digit  \d shortcut 
+[a-zA-Z] alphabet 
+ [a-zA-z0-9] alphanumaric  (\w shortcut)
+ex:
+egrep "a[0-9]c" sample.txt 
+o/p:a7c 
+grep "a[0-9]+c" sample.txt 
+a7c 
+a78c 
+
+\s whitespace (space newline tabspace)
+
+ex: 
+search of the line which containes three words 
+egrep "[a-zA-Z0-9]+\s[a-zA-Z0-9+\s[a-zA-Z0-9]" sample.txt 
+
+shortcut way :
+egrep "\w+\s+\w+\s+\w" sample.txt 
+
+[^]:
+-------
+Any one character other than they given list 
+a[^aeious]c 
+apc 
+a7c 
+
+[^a-z] non-lower case 
+[^A-Z] uppercase 
+[^0-9] digit  \D shortcut 
+[^a-zA-Z] alphabet 
+[^a-zA-z0-9] alphanumaric  (\W shortcut)
+
+
+
+====================================
+Interval Regular expression 
+these expression tell us about the number of occurences of a character in a string 
+
+expression        description
+{n}             matches the preceding character appearing 'n' times exactly 
+{n,m} minimum , max occurances 
+
+
+{m,}
+minimum  m ocurences and max no limit 
+
+
+Usecase: 
+name should contain min of 2 character 
+name should contain only alphabets 
+
+[a-zA-Z]{2,}
+
+[0-9]{10} =>any 10 digit number 
+[6-9][0-9]{9} ==> mobile number should start with 6 to 9 
+
+egrep [6-9][0-9]{0} sample.txt 
+egrep "[0-9]{10}" sample.txt 
+
+email validation:
+=================
+egrep "\w+[@]\w+[.][a-z]+" sample.txt 
+
